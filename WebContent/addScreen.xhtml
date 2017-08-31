@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<p:layout style="min-width:900px;min-height:700px;">
+	<p:layoutUnit position="north" size="130">
+	<h2 align="center" style="font-family:verdana;color:blue;">SKYLINE THEATER</h2>
+	<h:form id = "form2" style="align:left">
+		<p:outputLabel value="Welcome " />
+		<h:outputText id="userName" value="#{movieController.userInfo.userName}  "/>
+		
+		 <p:commandButton value="Logout" action="#{movieController.logout}" />
+	</h:form>
+	</p:layoutUnit>
+	
+	<p:layoutUnit position="center" size="700">
+	<p:tabMenu activeIndex="#{param.i}">
+    <p:menuitem value="Overview" outcome="adminHome" icon="fa fa-home">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Movies" outcome="adminMovie" icon="fa fa-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+  <p:menuitem value="Add Movie" outcome="addMovie" icon="fa fa-edit">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+     <p:menuitem value="Add Screen" outcome="addScreen" icon="fa fa-edit">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+    <p:menuitem value="Update Movie" outcome="deleteMovie" icon="fa fa-edit">
+        <f:param name="i" value="4" />
+    </p:menuitem>
+	</p:tabMenu>	
+	
+	 <h:form>
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+        	<p:panel header="Add New Movie" style="margin-bottom:10px;">
+        
+         <h:panelGrid id="addNewMovie" columns="2" cellpadding="5">
+         
+	           <p:outputLabel value="Select Movie:" />
+    			<p:selectOneMenu id="selectMovie" value="#{movieController.movie.nameOfMovie}" style="width:150px">
+	                <p:ajax listener="#{movieController.onMovieNameSelectinAdmin}" update="movieId" />
+	                <f:selectItem itemLabel="Select Movie" itemValue="" noSelectionOption="true" />
+	                <f:selectItems value="#{movieController.movieNamesList}" />
+				</p:selectOneMenu>
+       
+        		
+        		<p:outputLabel for="movieId" value="Movie Id:"/>
+                    <p:inputText id="movieId" value="#{movieController.screen.movieId}" required="true" label="MovieId"/>
+ 					
+                   <p:outputLabel for="screenNumber" value="Screen Number:"/>
+                    <p:inputText id="screenNumber" value="#{movieController.screen.screenId}" required="true" label="Screen Number"/>
+                    
+                     <p:outputLabel for="showDate" value="Show Date:" />
+        			<p:calendar id="showDate" value="#{movieController.screen.showDate}" showOn="button" required="true" label="Show Date"/>
+        			
+        			
+        		<p:outputLabel for = "showTime" value="Show Time:"/>
+        		<p:inputText id="showTime" value="#{movieController.screen.showTime}" required="true" label = "Show Time"/>
+        		
+        		<p:outputLabel for="showId" value="Show Id:"/>
+                    <p:inputText id="showId" value="#{movieController.screen.showId}" required ="true" label="ShowId"/>
+                    
+        		 <p:outputLabel for="numberOfSeats" value="Number of Seats:" />
+        			<p:inputText id="numberOfSeats" value="#{movieController.screen.numberOfSeats}" required="true" label="numberOfSeats"/>					
+					        			
+						 <p:outputLabel for="price" value="Set Ticket Price:" />
+        			<p:inputText id="price" value="#{movieController.screen.price}" required="true" label="Ticket Price"/>	
+        		
+        		<p:commandButton id = "submit" value="Add Screen" action="#{movieController.addScreen}" ajax="false"/>
+        
+	        </h:panelGrid> 
+    	</p:panel>
+        </h:form>
+        
+	
+	</p:layoutUnit>
+	
+
+
+</p:layout>
+</h:body>
+
+</html>
+

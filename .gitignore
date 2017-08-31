@@ -1,0 +1,12 @@
+/target/
+/bin/
+
+/build/
+.settings
+.project
+.classpath
+.jar
+.metadata
+/WebContent/WEB-INF/lib
+/WebContent/images
+/WebContent/META-INF

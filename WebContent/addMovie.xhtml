@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<p:layout style="min-width:900px;min-height:700px;">
+	<p:layoutUnit position="north" size="130">
+	<h2 align="center" style="font-family:verdana;color:blue;">SKYLINE THEATER</h2>
+	<h:form id = "form2" style="align:left">
+		<p:outputLabel value="Welcome " />
+		<h:outputText id="userName" value="#{movieController.userInfo.userName}  "/>
+		
+		 <p:commandButton value="Logout" action="#{movieController.logout}" />
+	</h:form>
+	</p:layoutUnit>
+	
+	<p:layoutUnit position="center" size="700">
+	<p:tabMenu activeIndex="#{param.i}">
+    <p:menuitem value="Overview" outcome="adminHome" icon="fa fa-home">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Movies" outcome="adminMovie" icon="fa fa-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+   <p:menuitem value="Add Movie" outcome="addMovie" icon="fa fa-edit">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+     <p:menuitem value="Add Screen" outcome="addScreen" icon="fa fa-edit">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+    <p:menuitem value="Update Movie" outcome="deleteMovie" icon="fa fa-edit">
+        <f:param name="i" value="4" />
+    </p:menuitem>
+	</p:tabMenu>	
+	
+	 <h:form>
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+        	<p:panel header="Add New Movie" style="margin-bottom:10px;">
+        
+         <h:panelGrid id="addNewMovie" columns="2" cellpadding="5">
+         
+	            <p:outputLabel for="movieId" value="Provide Movie Id: " />
+            		<p:inputText id="movieId" value="#{movieController.movie.movieId}" required="true" label="Movie Id" />
+       
+        		
+        		<p:outputLabel for="movieName" value="Movie Name:"/>
+                    <p:inputText id="movieName" value="#{movieController.movie.nameOfMovie}" required="true" label="Movie Name"/>
+ 					
+                   <p:outputLabel for="movieType" value="Movie Type:"/>
+                    <p:inputText id="movieType" value="#{movieController.movie.movieType}" required="true" label="Movie Type"/>
+                    
+        		<p:outputLabel for = "runtime" value="RunTime:"/>
+        		<p:inputText id="runtime" value="#{movieController.movie.runtime}" required="true" label = "RunTime"/>
+        		
+        		<p:outputLabel for="category" value="Category:"/>
+                    <p:inputText id="category" value="#{movieController.movie.category}" required ="true" label="Category"/>
+                    
+        		 <p:outputLabel for="cast" value="Cast:" />
+        			<p:inputText id="cast" value="#{movieController.movie.cast}" required="true" label="cast"/>					
+					        			
+					<p:outputLabel for="trailer" value="Trailer:" />
+        			<p:inputText id="trailer" value="#{movieController.movie.trailer}" required ="true" label="Trailer"/>
+        			
+    				<p:outputLabel for="synopsis" value="Synopsis:" />
+    				<p:inputText id="synopsis" value="#{movieController.movie.synopsis}" required="true" label="Synopsis" style="height:50px;width:250px;"/>
+        		
+        		<p:commandButton id = "submit" value="Add Movie" action="#{movieController.addMovie}" ajax="false"/>
+        
+	        </h:panelGrid> 
+    	</p:panel>
+        </h:form>
+	
+	</p:layoutUnit>
+	
+	
+
+</p:layout>
+</h:body>
+
+</html>
+

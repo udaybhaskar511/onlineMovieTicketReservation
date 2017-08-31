@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<p:layout style="min-width:900px;min-height:700px;">
+	<p:layoutUnit position="north" size="130">
+	<h2 align="center" style="font-family:verdana;color:blue;">SKYLINE THEATER</h2>
+	<h:form id = "form2" style="align:left">
+		<p:outputLabel value="Welcome " />
+		<h:outputText id="userName" value="#{movieController.userInfo.userName}  "/>
+		
+		 <p:commandButton value="Logout" action="#{movieController.logout}" />
+	
+	</h:form>
+	
+	</p:layoutUnit>
+	
+	<p:layoutUnit position="center" size="700">
+	<p:tabMenu activeIndex="#{param.i}">
+    <p:menuitem value="Overview" outcome="home" icon="fa fa-home">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Movies" outcome="movie" icon="fa fa-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Cancel Ticket" outcome="modify" icon="fa fa-edit">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+    <p:menuitem value="Trailers" outcome="trailer" icon="fa fa-youtube-square">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+    <p:menuitem value="Rating" outcome="Rating" icon="fa fa-youtube-square">
+        <f:param name="i" value="4" />
+    </p:menuitem>
+	</p:tabMenu>	
+	
+	<p:spacer/>
+	<p:spacer/>
+	<h3>Your booking is successful. Please note your Booking ID.</h3>
+	<br/>
+	<p:outputLabel for="bookingId" value="Your booking Id is "/>
+	<h:outputText id="bookingId" value="#{movieController.bookingInfo.bookingId}"></h:outputText>
+	<br/>
+	<h3>Thanks for booking</h3>
+	
+	</p:layoutUnit>
+	
+	<p:layoutUnit position="south" size="50">
+	<p:link outcome="contactus" value="Contact US"/>
+	</p:layoutUnit>
+
+</p:layout>
+</h:body>
+
+</html>

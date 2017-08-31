@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+
+<h:head>
+
+</h:head>
+
+<h:body>
+<p:layout style="min-width:900px;min-height:700px;">
+	<p:layoutUnit position="north" size="100">
+	<h2 align="center" style="font-family:verdana;color:blue;">SKYLINE THEATER</h2>
+	<h:form id = "form2" style="align:left">
+		<p:outputLabel value="Welcome " />
+		<h:outputText id="userName" value="#{movieController.userInfo.userName}  "/>
+		
+		 <p:commandButton value="Logout" action="#{movieController.logout}" />
+	
+	</h:form>
+	
+	</p:layoutUnit>
+	
+	<p:layoutUnit position="center" size="700">
+	<p:tabMenu activeIndex="#{param.i}">
+     <p:menuitem value=" Overview" outcome="adminHome" icon="fa fa-home">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Movies" outcome="adminMovie" icon="fa fa-search">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    <p:menuitem value="Add Movie" outcome="addMovie" icon="fa fa-edit">
+        <f:param name="i" value="2" />
+    </p:menuitem>
+     <p:menuitem value="Add Screen" outcome="addScreen" icon="fa fa-edit">
+        <f:param name="i" value="3" />
+    </p:menuitem>
+    <p:menuitem value="Update Movie" outcome="deleteMovie" icon="fa fa-edit">
+        <f:param name="i" value="4" />
+    </p:menuitem>
+	</p:tabMenu>	
+		<h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel for="updatedMovieName" value="Movie deleted successfully. Movie name is: "/>
+				<h:outputText id="updatedMovieName" value="#{movieController.movie.nameOfMovie}" />
+			</h:panelGrid>
+		
+		</h:form>
+	</p:layoutUnit>
+
+</p:layout>
+</h:body>
+
+</html>
+
